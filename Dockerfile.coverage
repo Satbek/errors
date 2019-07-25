@@ -1,0 +1,6 @@
+FROM tarantool/tarantool:1.x-centos7
+
+COPY . /errors
+RUN yum -y install make gcc &&\
+    tarantoolctl rocks install luacov --server=http://rocks.moonscript.org &&\
+    tarantoolctl rocks install luacov-coveralls --server=http://rocks.moonscript.org
